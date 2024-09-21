@@ -6,7 +6,9 @@ import Image from "next/image";
 import James from "../assets/images/james3.jpg";
 import { H4, H5, H6, P2 } from "@/components/Shared/headings/Headings";
 import InfoCard from "@/components/Account/InfoCard";
-import TransactionItem from "@/components/Account/TransactionItem";
+import TransactionItem, {
+  getDateDaysAgo,
+} from "@/components/Account/TransactionItem";
 import Button from "@/components/Shared/button/Button";
 import Modal from "@/components/Shared/Modal/Modal";
 import Maintenance from "@/components/Modals/Maintenace";
@@ -36,8 +38,8 @@ const Home = () => {
   };
 
   const totalBalance = externalUserData
-    ? (92285.59 - parseFloat(externalUserData.Amount || "0")).toLocaleString()
-    : (92285.59).toLocaleString();
+    ? (102285.59 - parseFloat(externalUserData.Amount || "0")).toLocaleString()
+    : (102285.59).toLocaleString();
 
   const pendingBalance = externalUserData
     ? (11520.23 + parseFloat(externalUserData.Amount || "0")).toLocaleString()
@@ -46,6 +48,16 @@ const Home = () => {
   const checkingBalance = externalUserData
     ? (16022.57 - parseFloat(externalUserData.Amount || "0")).toLocaleString()
     : (16022.57).toLocaleString();
+
+  const presentDay = getDateDaysAgo(0);
+  const oneDayAgo = getDateDaysAgo(1);
+  const twoDaysAgo = getDateDaysAgo(2);
+  const threeDaysAgo = getDateDaysAgo(3);
+  const fourDaysAgo = getDateDaysAgo(4);
+  const fiveDaysAgo = getDateDaysAgo(5);
+  const sixDaysAgo = getDateDaysAgo(6);
+  const sevenDaysAgo = getDateDaysAgo(7);
+  const eightDaysAgo = getDateDaysAgo(8);
 
   return (
     <>
@@ -145,23 +157,23 @@ const Home = () => {
                       )}
 
                       <TransactionItem
-                        date="September 9, 2024"
-                        company="Unify Financial Credit Union"
+                        date={presentDay}
+                        company="Community America Credit Union"
                         description="Processing"
                         amount={"250.00"}
                         transactionType="pending"
                       />
 
-                      <TransactionItem
-                        date="September 9, 2024"
+                      {/* <TransactionItem
+                        date="September 7, 2024"
                         company="Addition Financial Credit Union"
                         description="Processing"
                         amount={"780.21"}
                         transactionType="pending"
-                      />
+                      /> */}
 
                       <TransactionItem
-                        date="September 9, 2024"
+                        date={oneDayAgo}
                         company="ABNB Federal Credit Union"
                         description="Pending"
                         amount={"1000.00"}
@@ -169,7 +181,7 @@ const Home = () => {
                       />
 
                       <TransactionItem
-                        date="September 9, 2024"
+                        date={oneDayAgo}
                         company="Navy Federal"
                         description="Approved"
                         amount={"350.00"}
@@ -184,42 +196,13 @@ const Home = () => {
                         transactionType="pending"
                       /> */}
                       <TransactionItem
-                        date="August 30, 2024"
+                        date={oneDayAgo}
                         company="Savings - 7596"
                         description="Internal Transfer"
                         amount={"9200.00"}
                         transactionType="pending"
                       />
 
-                      {/* 
-                      <TransactionItem
-                        date="APril 26, 2024"
-                        company="Wells Fargo"
-                        description="Pending"
-                        amount={"200.00"}
-                        transactionType="pending"
-                      /> */}
-                      {/* <TransactionItem
-                        date="APril 21, 2024"
-                        company="SECU"
-                        description="Pending"
-                        amount={"3585.50"}
-                        transactionType="pending"
-                      /> */}
-                      {/* <TransactionItem
-                        date="APril 17, 2024"
-                        company="Citizen Bank"
-                        description="Direct Deposit"
-                        amount={"200.00"}
-                        transactionType="pending"
-                      /> */}
-                      {/* <TransactionItem
-                        date="APril 15, 2024"
-                        company="Texas Tech CU"
-                        description="Processing"
-                        amount={"3662.22"}
-                        transactionType="pending"
-                      /> */}
                       {/* <TransactionItem
                         date="July 23, 2024"
                         company="Walmart"
@@ -227,40 +210,26 @@ const Home = () => {
                         amount={"1520.23"}
                         transactionType="pending"
                       /> */}
-                      {/* <TransactionItem
-                        date="APril 12, 2024"
-                        company="Florida Credit Union"
-                        description="Ongoing Verification"
-                        amount={"200.00"}
-                        transactionType="pending"
-                      /> */}
-                      {/* <TransactionItem
-                        date="APril 6, 2024"
-                        company="Cashapp"
-                        description="Failed"
-                        amount={"200.00"}
-                        transactionType="debit"
-                      /> */}
                     </div>
 
                     <hr />
                     <H6>Posted</H6>
                     <TransactionItem
-                      date="September 8, 2024"
+                      date={twoDaysAgo}
                       company="Legacy Community Health"
                       description="Mobile Deposit"
                       amount={9590.42}
                       transactionType="credit"
                     />
                     <TransactionItem
-                      date="September 8, 2024"
+                      date={twoDaysAgo}
                       company="Chase Bank"
                       description="Direct Deposit"
                       amount={"3,585.50"}
                       transactionType="credit"
                     />
                     <TransactionItem
-                      date="September 7, 2024"
+                      date={threeDaysAgo}
                       company="Bank of the west"
                       description=""
                       amount={"10,500.98"}
@@ -268,14 +237,14 @@ const Home = () => {
                     />
 
                     <TransactionItem
-                      date="September 7, 2024"
+                      date={threeDaysAgo}
                       company="Inter-Continental Jewelers"
                       description="Jewelry Store"
                       amount={"2500.00"}
                       transactionType="debit"
                     />
                     <TransactionItem
-                      date="September 6, 2024"
+                      date={fourDaysAgo}
                       company="Legacy Community Health"
                       description="Mobile Deposit"
                       amount={8490.89}
@@ -283,28 +252,22 @@ const Home = () => {
                     />
 
                     <TransactionItem
-                      date="September 4, 2024"
+                      date={fourDaysAgo}
                       company="Truist Bank"
                       description="Direct Deposit"
                       amount={895.23}
                       transactionType="debit"
                     />
-                    {/* <TransactionItem
-                      date="APril , 2024"
-                      company="Citizens Bank"
-                      description="Failed"
-                      amount={"3648.46"}
-                      transactionType="debit"
-                    /> */}
+
                     <TransactionItem
-                      date="September 3, 2024"
+                      date={fiveDaysAgo}
                       company="Walmart"
                       description=""
                       amount={"948.60"}
                       transactionType="debit"
                     />
                     <TransactionItem
-                      date="September 3, 2024"
+                      date={fiveDaysAgo}
                       company="Legacy Community Health"
                       description="Wages"
                       amount={"10,254.23"}
@@ -312,14 +275,14 @@ const Home = () => {
                     />
 
                     <TransactionItem
-                      date="September 2, 2024"
+                      date={sixDaysAgo}
                       company="Bitcoin"
                       description="Crypto"
                       amount={"6,700.12"}
                       transactionType="credit"
                     />
                     <TransactionItem
-                      date="September 1, 2024"
+                      date={sixDaysAgo}
                       company="Gas"
                       description=""
                       amount={95.69}
@@ -327,7 +290,7 @@ const Home = () => {
                     />
 
                     <TransactionItem
-                      date="September 1, 2024"
+                      date={sevenDaysAgo}
                       company="Walmart"
                       description=""
                       amount={350.96}
@@ -335,7 +298,7 @@ const Home = () => {
                     />
 
                     <TransactionItem
-                      date="September 1, 2024"
+                      date={sevenDaysAgo}
                       company="Feeding America"
                       description="Donation"
                       amount={"3,500.00"}
@@ -343,29 +306,15 @@ const Home = () => {
                     />
 
                     <TransactionItem
-                      date="August 30, 2024"
-                      company="Walmart"
-                      description=""
-                      amount={"256.91"}
-                      transactionType="debit"
-                    />
-                    <TransactionItem
-                      date="August 29, 2024"
+                      date={sevenDaysAgo}
                       company="TSLA"
                       description="Stock"
                       amount={"12,625.50"}
                       transactionType="credit"
                     />
 
-                    {/* <TransactionItem
-                      date="February 27, 2024"
-                      company="Hillside Vetinary Clinic"
-                      description="Professional service"
-                      amount={200.23}
-                      transactionType="debit"
-                    /> */}
                     <TransactionItem
-                      date="August 26, 2024"
+                      date={eightDaysAgo}
                       company="Savings - 7596"
                       description="Internal Transfer"
                       amount={500.54}
