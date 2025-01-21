@@ -3,7 +3,7 @@ import SideNav from "@/components/SideNav/SideNav";
 import React, { useState } from "react";
 import mountain from "@/assets/images/mountain.jpg";
 import Image from "next/image";
-import James from "../assets/images/james3.jpg";
+import James from "../assets/images/james4.jpg";
 import { H4, H5, H6, P2 } from "@/components/Shared/headings/Headings";
 import InfoCard from "@/components/Account/InfoCard";
 import TransactionItem, {
